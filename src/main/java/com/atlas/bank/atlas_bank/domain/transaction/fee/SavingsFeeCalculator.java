@@ -1,0 +1,17 @@
+package com.atlas.bank.atlas_bank.domain.transaction.fee;
+
+import com.atlas.bank.atlas_bank.domain.account.enums.AccountTypeEnum;
+
+import java.math.BigDecimal;
+
+public class SavingsFeeCalculator implements FeeCalculator {
+    @Override
+    public boolean supports(AccountTypeEnum accountType) {
+        return AccountTypeEnum.SAVINGS.equals(accountType);
+    }
+
+    @Override
+    public BigDecimal calculate(BigDecimal amount) {
+        return amount.multiply(new BigDecimal("0.01"));
+    }
+}
